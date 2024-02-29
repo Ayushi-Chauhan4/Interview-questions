@@ -1,0 +1,43 @@
+# Questions asked at Lighthouse Canton : 
+# About Data lake concepts. Layers. Significance
+# Decorators, generators, yield, lambda in Python
+# 
+
+# # Sort the list : ['fdg','yhgh','ihg','rtf','sdgg','adf','bhjj','eghh']
+# # sort vowels, then consonants
+
+# lst = ['fdg','yhgh','ihg','rtf','sdgg','adf','bhjj','eghh']
+
+# lst.sort()
+# vlist=[]
+# clist=[]
+# v = ['a','e','i','o','u']
+
+# for i,n in enumerate(lst):
+#     if n[0] in v:
+#         vlist.append(n)
+#     else :
+#         clist.append(n)
+
+
+# res=vlist + clist
+
+# vlist = [n for n in lst and n in v]
+# print(res)
+
+
+
+# For the given dictionary dataset, load it to dataframe with given column : user id , amount.
+# sort by amount
+
+import pandas as pd
+
+data = {'abc':89700,'def':970432,'pqr':6785,'xyz':78651}
+
+user_id=data.keys()
+amount=data.values()
+d={'user_id': user_id, 'amount':amount}
+
+df=pd.DataFrame(data =d)
+df=df.sort_values('amount', axis=0, ascending= False)
+print(df)

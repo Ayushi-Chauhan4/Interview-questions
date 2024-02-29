@@ -1,0 +1,94 @@
+Q1 . Input:
+Continent,Country,Population
+Asia,India,6000
+Europe,Germany,2000
+Asia,Japan,4000
+NorthAmerica,USA,1000
+Asia, Indonesia, 1000
+
+a. Find country to continent population ratio of each row as separate column
+
+with c as (
+select continent, sum(population) as pop
+from inp
+group by 1
+)
+select continent, country, population/pop as ratio
+from inp 
+join c
+on inp.continent = c.continent
+
+** Write it without CTE.... in same select statement. I used SUM() window for it. **
+
+b. Find the bottom 2 countries with lowest population
+
+with ranked as (
+select country, dense_rank() over (partition by country order by population desc) as rn
+from inp)
+select * from ranked where rn<3;
+
+** Why use CTE? Benefits/Tradeoffs
+
+Q2. id,Name
+1,A
+1,B
+1,C
+1,D
+
+Table2:
+id,eid
+1,1001
+1,1002
+2,NULL
+
+Inner join : [***8***]
+left join : [***8***]
+right join : [***9***]
+full outer join : [***9***]
+Anti-joins as well
+
+Q3. Assume there are two very large datasets and we have following two queries, 
+can both of them be used while using large datasets?:
+
+1. select * from table1 t1 where t1.Place in ( select place from table2)
+2. select * from table t1 inner join table2 t2 on t1.place=t2.place
+
+Ans - [***1***]
+
+Q4. a. What are coalesce and repartition?
+    b. Uses of 'where' or 'having'. Can 1 be used instead of other?
+    c. Data Skewness. What is it? Why and how to optimise?
+    d. 
+
+
+Q5. a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+What will be the value of 'a' on doing the below operations?
+
+Q5.1    a += ['grault', 'garply'] 
+Q5.2    After the above operation if we do --> a+=20, then what is output?
+Q5.3    a+= 'corge' if this operation is done what will be output of 'a' list?
+
+
+Q6. What will be the output of the following : 
+
+class Employee:
+
+    def __init__(self, first, last):
+
+        self.first = first
+        self.last = last
+        self.email = first + '.' + last + '@email.com'
+
+    def fullname(self):
+
+        return '{} {}'.format(self.first, self.last)
+
+emp1 = Employee('John', 'Smith')
+emp1.first = 'Jim'
+
+a. print(emp1.first) [***Jim***]
+b. print(emp1.email) [***John.Smith@email.com***]
+c. print(emp1.fullname()) [***Jim Smith***]
+
+Ques on Pipeline Orchestration. Crontab, Github, Prefect.
+Ques on past projects.
