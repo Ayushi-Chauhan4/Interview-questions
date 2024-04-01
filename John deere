@@ -1,0 +1,41 @@
+Explain your projects
+
+Q1. Divide a list into two list from middle. Ex : [1,2,3,4,5,6,7]
+Q2. Given a list of integers. Print the count of each value present in list. Ex : [1,2,3,3,4,5,5,5,6,7,7]
+
+Q3. Return the employee name and manager name for each each employee from the given table :
+empno,empname,sal,mgrid
+
+1,ayushi,10,null
+2,mahesh,11,1
+3,gopi,12,2
+4,sarath,13,3
+5,xyz,11,1
+
+select a.empname, b.empname as mgrname
+from t1 a
+left join t1 b
+on a.mgrid=b.empno
+
+
+Q4. What were your steps of Pipeline? What optimisations are applied? Idetify Dist keys, why and how?
+1. To know the data is present (sftp, datashare, )
+2. Archive/Copy the data to our storage S3, FTP
+3. DDL for STG Tables
+4. Load the data to tables. Copy commands, shell scripts
+	Validation
+5. Combining the STG table and Historical table - DELETE_FLAG
+6. Validation
+7. Transformations 
+
+Q5. Difference between Netezza and Redshift. Which is better, why? Explain architecture of both. clusters, nodes, types of clusters
+Q6. How is data stored in both of them. Concept of Dist keys, sort keys.
+Q7. What is the block size in Redshift? Ans - 10MB
+Q8. Comparing database with Oracle. Which is better, why?
+Q9. S3 - what is it? How do you access it? Benefits? Storage classes and their implementation? 
+Q10. How can a lambda access s3? How to use IAM role here. Where to define? Where to attach?
+Q11. Concept of datashare. Data duplication? or how to add, extend, etc.
+Q12. Spark: Architecture, how to Run job, DAGs, narrow/wide transformations.
+Q13. RDD vs Dataframe. differences, uses.
+Q14. Linux - Difference between $, $$ and $*
+Q15. How to identify error in pipeline? Like if failed at copy command?-stl_load_error
